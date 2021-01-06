@@ -260,6 +260,15 @@ def register():
         username = request.form.get("name")
         password = request.form.get("password")
         passwordagain = request.form.get("passwordagain")
+        # check same username
+        userlist = []
+        UserNameList = db.execute("SELECT username FROM users")
+        for i in range(len(UserNameList)):
+            userlist.append(UserNameList[i]['username'])
+        if username in userlist:
+            return apology("User name already exists.", 400)
+
+        # check input password
         if password == passwordagain:
             hashpassword = generate_password_hash(password)
             sql = "INSERT INTO users (username, hash) VALUES (?, ?)"
