@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>TOTAL</th>
+                </tr>
+                <tfoot>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td>${{ cash_Total }}</td>
+                    </tr>
+                </tfoot>
+                {% for i in stock_table %}
+                    <tbody>
+                        <td>{{ i["symbol"] }}</td>
+                        <td>{{ i["name"] }}</td>
+                        <td>{{ i["shares"] }}</td>
+                        <td>${{ i["price"] }}</td>
+                        <td>${{ i["TOTAL"] }}</td>
+
+                    </tbody>
+                {% endfor %}
+                  <tr>
+                      <td colspan="4" align="left">CASH</td>
+                      <td>${{cash}}</td>
+                  </tr>
+            </thead>
+        </table>
+{% endblock %}
