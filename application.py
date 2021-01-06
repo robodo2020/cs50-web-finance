@@ -65,7 +65,7 @@ def index():
     # add all price to total
 
 
-    return render_template("index.html", stock_table = stock_table, cash_Total  = cash_Total, cash = cash)
+    return render_template("index.html", stock_table = stock_table, cash_Total  = float('%.2f' % cash_Total), cash = cash)
 
 # Change Password
 
